@@ -1,0 +1,25 @@
+<% if user_signed_in? %>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+
+    <%= link_to 'Public Recipes', recipes_path , class: "navbar-brand"%>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'My Recipes', recipes_path , class: "nav-link"%>
+        </li>
+
+        <li>
+          <li class="nav-item">
+            <%= link_to "Foods", recipes_path, class: 'nav-link'%>
+          </li>
+        </li>
+      </ul>
+      <div class="d-flex" role="delete">
+        <%= button_to "Sign out", destroy_user_session_path, class:"btn btn-outline-success", :method => :delete%>
+      </div>
+    </div>
+    </div>
+  </nav>
+<%end%>
