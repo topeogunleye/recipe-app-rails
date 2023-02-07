@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
+    @user = current_user
     @recipes = Recipe.all
   end
 
@@ -25,6 +26,7 @@ class RecipesController < ApplicationController
   # POST /recipes or /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.user = current_user
 
     respond_to do |format|
       if @recipe.save
@@ -57,6 +59,29 @@ class RecipesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def shopping_list
+    @recipe_shopping = Recipe.find(params[:id]).recipe_foods
+    @food = []
+    @recipe_shopping.ids.each do |id|
+      @food.push(Food.find_by(id:))
+    end
+    @user_food = current_user.food
+    @comparison_food = custom_difference(@food, @user_food)
+    @food.each do |a|
+      puts a.name
+    end
+    puts 'hello'
+    @user_food.each do |a|
+      puts a.name
+    end
+    same_food_result = same_food(@food, @user_food)
+    if same_food_result.zero?
+      @comparison_food
+    else
+      @comparison_food.append(same_food(@food, @user_food))
     end
   end
 
