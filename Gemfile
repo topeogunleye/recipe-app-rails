@@ -12,9 +12,7 @@ gem 'cancancan'
 gem 'dotenv-rails'
 
 # Add bootstrap for styling
-gem 'bootstrap-sass'
-
-gem 'bootstrap', '~> 5.1.3'
+gem 'bootstrap', '~> 5.2'
 
 # Add rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'
