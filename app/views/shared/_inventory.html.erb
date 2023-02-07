@@ -1,0 +1,13 @@
+<div class="card mt-3">
+  <div class="card-body d-flex">
+    <div class="col-3">
+      <h3 class="card-title">
+        <%= link_to "#{inventory.name}", inventory_path(inventory) %>
+      </h3>
+      <a href="#" class="btn btn-primary">Remove</a>
+    </div>
+    <div class="col-9">
+      <p class="card-text"><%= inventory.description %></p>
+    </div>
+  </div>
+</div>
