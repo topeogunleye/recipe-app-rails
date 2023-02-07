@@ -15,6 +15,12 @@
             <%= link_to "Foods", recipes_path, class: 'nav-link'%>
           </li>
         </li>
+
+        <li>
+          <li class="nav-item">
+            <%= link_to "Inventories", recipes_path, class: 'nav-link'%>
+          </li>
+        </li>
       </ul>
       <div class="d-flex" role="delete">
         <%= button_to "Sign out", destroy_user_session_path, class:"btn btn-outline-success", :method => :delete%>
