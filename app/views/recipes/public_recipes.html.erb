@@ -1,0 +1,26 @@
+<div class="public_recipes">
+  <h1>Public Recipes</h1>
+  <% if @public_recipe == nil %>
+  <% else  %>
+    <% @public_recipe.each do |p| %>
+      <div class="public_recipe_container">
+        <div class="public_recipe_details">
+          <h2>
+            <%= link_to p.name, recipe_path(p.id), class:"recipe-title" %>
+          </h2>
+          <h3>By: <%= p.user.name %></h3>
+        </div>
+        <div class="public_recipe_numerics">
+          <h3>Total Food Items: <%= p.recipe_foods.count %></h3>
+          <h3>Total Price : 
+            <% sum = 0 %>
+            <% p.recipe_foods.each do |rp| %>
+              <% sum += rp.quantity * rp.food.price %>
+            <% end %>
+            $<%= sum %>
+          </h3>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

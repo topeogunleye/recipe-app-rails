@@ -1,14 +1,21 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Recipes</h1>
 
-<div id="recipes">
-  <% @recipes.each do |recipe| %>
-    <%= render recipe %>
-    <p>
-      <%= link_to "Show this recipe", recipe %>
-    </p>
-  <% end %>
+<div class="recipe-list">
+  <div>
+    <%= link_to "New Recipe", new_recipe_path, class:"no-underline hover:underline text-purple-700 text-lg" %>
+  </div>
+  <ul class="border-2 border-gray-600">
+    <% if @recipes&.empty? %>
+      <p>No recipes to show!</p>
+      <%else%>
+      <% @recipes&.each do |recipe| %>
+        <%= render recipe %>
+         <p>
+          <%= link_to "Show this recipe", recipe %>
+        </p>
+      <% end %>
+    <%end%>
+  </ul>
 </div>
 
-<%= link_to "New recipe", new_recipe_path %>
