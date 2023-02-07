@@ -1,13 +1,15 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.2'
+ruby '3.1.3'
 
 # Add devise for authentication
 gem 'devise'
 
 # Add cancancan for authorization
 gem 'cancancan'
+
+gem 'dotenv-rails'
 
 # Add bootstrap for styling
 gem 'bootstrap-sass'
