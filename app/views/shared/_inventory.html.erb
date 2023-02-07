@@ -4,7 +4,7 @@
       <h3 class="card-title">
         <%= link_to "#{inventory.name}", inventory_path(inventory) %>
       </h3>
-      <a href="#" class="btn btn-primary">Remove</a>
+      <%= button_to "Remove", inventory_path(inventory), method: :delete, data: { turbo: false }, class: 'btn btn-primary' %>
     </div>
     <div class="col-9">
       <p class="card-text"><%= inventory.description %></p>

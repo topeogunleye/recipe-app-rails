@@ -4,6 +4,11 @@ class InventoriesController < ApplicationController
   end
 
   def show
-    @inventory = Inventory.find(params[:id])
   end
+
+  def destroy
+    Inventory.destroy(params[:id])
+    redirect_to inventories_path
+  end
+
 end
