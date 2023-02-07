@@ -1,2 +1,73 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.food-btn {
+	float: right;
+	margin: 5vh 9vw 5vh auto;
+}
+
+table {
+	border:none;
+	border-collapse: collapse;	
+}
+
+table.center{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table th {
+	border: 2px solid #000;
+	background-color: rgba(0, 0, 0, 0.227);	
+}
+
+table td {
+	border-left: 2px solid #000;
+	border-right: 2px solid #000;
+}
+
+table tr:first-child {
+	border-top: 2px solid #000;
+}
+
+table tr:last-child {
+	border-bottom: 2px solid #000;
+}
+
+.food-form,
+.show-food {
+	text-align: center;
+}
+
+.form-label {
+	display: inline-block;
+	text-align: right;
+	width: 150px;
+}
+
+.form-field {
+	border-radius: 4px;
+	margin: 5px;
+}
+
+.btn-gradient {
+	margin-top: 10px;
+	margin-left: 150px;
+}
+
+.back-btn,
+.show-back-btn {
+	text-align: center;
+}
+
+.new-food-btn,
+.edit-food-btn {
+	text-align: center;
+	margin-bottom: 1.25rem;
+	margin-left: 10rem;
+}
+
+.delete-btn {
+	margin-top: 1.25rem;;
+}

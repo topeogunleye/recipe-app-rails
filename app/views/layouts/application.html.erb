@@ -11,8 +11,18 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if !flash.empty? %>
+  <div class="flash-messages-container">
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) && [:success, :info, :error, :warning].include?(name) %>
+        <div class="flash-message" data-type="<%= name %>" >
+          <%= msg %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <% flash.clear %>
+<% end %>
     <%= yield %>
     <% if user_signed_in? %>
       <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
