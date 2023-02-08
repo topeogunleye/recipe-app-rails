@@ -1,9 +1,7 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :destroy, Inventory, user: user
+    can :destroy, Inventory, user:
   end
 end

@@ -33,6 +33,7 @@ class InventoriesController < ApplicationController
   end
 
   private
+
   def inventory_params
     params.require(:inventory).permit(:name, :description).merge(user: current_user)
   end
