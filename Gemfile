@@ -13,7 +13,7 @@ gem 'dotenv-rails'
 
 # Add bootstrap for styling
 gem 'bootstrap', '~> 5.2'
-gem "bootstrap_form", "~> 5.1"
+gem 'bootstrap_form', '~> 5.1'
 
 # Add rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'
