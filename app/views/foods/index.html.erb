@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+<%= link_to "Add Food", new_food_path, class: 'btn food-btn btn-primary'%>
+
+<div id="foods" class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="col-sm-4">Food</th>
+        <th class="col-sm-4">Measurement Unit</th>
+        <th class="col-sm-4">Price</th>
+        <th class="col-sm-4">Actions</th>
+      </tr>
+    </thead> 
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <td class="col-sm-4"><%= food.name %></td>
+          <td class="col-sm-4"><%= food.measurement_unit %></td>
+          <td class="col-sm-4"><%= food.price %></td>
+          <td class="col-sm-4"><%= link_to "Delete", food, method: :delete %></td>
+        </tr>    
+      <% end %>
+    </tbody> 
+  
+  </table>
+</div>
+
+
