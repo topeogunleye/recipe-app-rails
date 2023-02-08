@@ -79,6 +79,9 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.6, < 3)
       sassc-rails (>= 2.0.0)
+    bootstrap_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     builder (3.2.4)
     cancancan (3.4.0)
     capybara (3.38.0)
@@ -110,7 +113,9 @@ GEM
       railties (>= 3.2)
     erubi (1.12.0)
     execjs (2.8.1)
+    ffi (1.15.5)
     ffi (1.15.5-x64-mingw-ucrt)
+    ffi (1.15.5-x64-mingw32)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -151,6 +156,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.14.1-x64-mingw-ucrt)
       racc (~> 1.4)
+    nokogiri (1.14.1-x64-mingw32)
+      racc (~> 1.4)
     nokogiri (1.14.1-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -159,6 +166,7 @@ GEM
       ast (~> 2.4.1)
     pg (1.4.5)
     pg (1.4.5-x64-mingw-ucrt)
+    pg (1.4.5-x64-mingw32)
     popper_js (2.11.6)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -242,6 +250,8 @@ GEM
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
+    sassc (2.4.0-x64-mingw32)
+      ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
       sassc (>= 2.0)
@@ -294,11 +304,13 @@ GEM
 
 PLATFORMS
   x64-mingw-ucrt
+  x64-mingw32
   x86_64-linux
 
 DEPENDENCIES
   bootsnap
   bootstrap (~> 5.2)
+  bootstrap_form (~> 5.1)
   cancancan
   capybara
   debug
@@ -322,7 +334,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.1.3p185
+   ruby 3.0.4p208
 
 BUNDLED WITH
-   2.3.24
+   2.4.4
