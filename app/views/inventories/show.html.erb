@@ -2,7 +2,7 @@
   <div class="container">
     <div class="d-flex flex-column pb-3 mb-5 border-bottom">
       <h1 class="m-auto"><%= @inventory.name %></h1>
-      <%= button_to 'Add food', '#', class: 'btn btn-success d-block ms-auto' %>
+      <%= link_to 'Add food', new_inventory_inventory_food_path(@inventory), class: 'btn btn-success d-block ms-auto' %>
     </div>
   <table class="table table-bordered table-striped w-75 m-auto ">
     <thead>
