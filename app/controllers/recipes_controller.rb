@@ -96,8 +96,6 @@ class RecipesController < ApplicationController
     @recipe_food.save
 
     redirect_to edit_recipe_path(@recipe)
-
-    
   end
 
   private
