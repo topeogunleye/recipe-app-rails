@@ -12,7 +12,7 @@
       <% @recipes&.each do |recipe| %>
         <%= render recipe %>
          <p>
-          <%= link_to "Show this recipe", '#', class:"link-primary" %>
+          <%= link_to "Show this recipe", recipe, class:"link-primary" %>
         </p>
       <% end %>
     <%end%>
