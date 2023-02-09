@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -10,7 +8,7 @@ class Ability
     #   can :read, :all
     #   return unless user.admin?
     #   can :manage, :all
-    can :destroy, Recipe, user: user
+    can :destroy, Recipe, user:
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
