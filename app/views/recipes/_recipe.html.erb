@@ -1,0 +1,17 @@
+
+<div class="d-flex align-items-center h-100 bg-dark border rounded">
+  <div class="col-4 p-2 border-right border-gray text-white text-lg">
+    <!-- content for the first part goes here -->
+    <h1><%= recipe.name %></h1>
+    <% if can? :destroy, recipe %>
+      <%= button_to "Delete", recipe , method: :delete, class:"bg-blue-500 h font-bold py-2 px-4 rounded" %>
+    <% end %>
+  </div>
+  <div class="col-8 p-2">
+    <!-- content for the second part goes here -->
+    <div class="text-white">
+      <p><%= recipe.description %></p>
+    </div>
+  </div>
+</div
+

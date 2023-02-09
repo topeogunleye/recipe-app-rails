@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+
+<div class="recipe-list container">
+  <div>
+    <%= link_to "New Recipe", new_recipe_path, class:"link-primary" %>
+  </div>
+  <ul class="border-2 border-gray-600">
+    <% if @recipes&.empty? %>
+      <p>No recipes to show!</p>
+      <%else%>
+      <% @recipes&.each do |recipe| %>
+        <%= render recipe %>
+         <p>
+          <%= link_to "Show this recipe", recipe, class:"link-primary" %>
+        </p>
+      <% end %>
+    <%end%>
+  </ul>
+</div>
+
