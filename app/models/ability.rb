@@ -2,14 +2,15 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :destroy, Food, user:
+    can :destroy, Food, user
+    can :destroy, Recipe, user
+
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?
     #   can :read, :all
     #   return unless user.admin?
     #   can :manage, :all
-    can :destroy, Recipe, user:
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
