@@ -1,8 +1,7 @@
-<p style="color: green"><%= notice %></p>
-
-<%= link_to "Add Food", new_food_path, class: 'btn food-btn btn-primary'%>
-
 <div id="foods" class="container">
+  <div class="text-right">
+    <%= link_to "Add Food", "/foods/new", class: 'btn btn-primary'%>
+  </div>
   <table class="table table-striped">
     <thead>
       <tr>
