@@ -4,7 +4,9 @@
       <h3 class="card-title">
         <%= link_to "#{inventory.name}", inventory_path(inventory) %>
       </h3>
-      <%= button_to "Remove", inventory_path(inventory), method: :delete, data: { turbo: false }, class: 'btn btn-primary' %>
+      <% if can? :destroy, inventory %>
+        <%= button_to "Remove", inventory_path(inventory), method: :delete, data: { turbo: false }, class: 'btn btn-primary' %>
+      <% end %>
     </div>
     <div class="col-9">
       <p class="card-text"><%= inventory.description %></p>
