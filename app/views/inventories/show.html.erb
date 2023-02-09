@@ -1,5 +1,26 @@
 <section>
   <div class="container">
-    <h1>Inventory Details!!</h1>
+    <div class="d-flex flex-column pb-3 mb-5 border-bottom">
+      <h1 class="m-auto"><%= @inventory.name %></h1>
+      <%= button_to 'Add food', '#', class: 'btn btn-success d-block ms-auto' %>
+    </div>
+  <table class="table table-bordered table-striped w-75 m-auto ">
+    <thead>
+      <tr>
+        <th scope="col">Food</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @inventory_foods.each do |inventory_food| %>
+          <td><%= inventory_food.food.name %></td>
+          <td><%= inventory_food.quantity %></td>
+          <td><%= link_to 'Delete', "#" %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
   </div>
 </section>
