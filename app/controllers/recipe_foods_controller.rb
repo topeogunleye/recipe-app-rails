@@ -6,6 +6,13 @@ class RecipeFoodsController < ApplicationController
     end
   end
 
+  def edit
+    @recipe_food = RecipeFood.find(params[:id])
+    respond_to do |format|
+      format.html { render :edit, locals: { recipe_food: @recipe_food } }
+    end
+  end
+
   def create
     @recipe_food = RecipeFood.find_by(recipe: recipe_food_params[:inventory],
                                       food_id: recipe_food_params[:food_id])

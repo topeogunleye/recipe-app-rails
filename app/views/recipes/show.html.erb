@@ -60,13 +60,17 @@
       <td>
           <div class="status w-64 flex justify-around text-xs">
             <span class="badge bg-blue-400 text-white rounded-sm px-1 py-0.5 uppercase grid place-items-center">
-               <%= link_to "Edit this recipe", edit_recipe_recipe_food_path(@recipe, id: recipe_food) %>
+              <% if can? :edit, @recipe_food %>
+                <%= link_to "Edit this recipe", edit_recipe_recipe_food_path(@recipe, id: recipe_food) %>
+              <% end %>
             </span>
           </div>
       </td>
       <td>
           <div class="w-64 flex justify-around text-xs text-sm text-red-600 border-red-400 rounded-sm border-2 px-1 py-0.5">
-          <%= button_to "Destroy this recipe", recipe_recipe_food_path(@recipe, id: recipe_food), method: :delete, data: { turbo: false } %>
+          <% if can? :edit, @recipe_food %>
+            <%= button_to "Destroy this recipe", recipe_recipe_food_path(@recipe, id: recipe_food), method: :delete, data: { turbo: false } %>
+          <% end %>
           </div>
 
       </td>
