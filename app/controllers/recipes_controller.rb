@@ -68,7 +68,7 @@ class RecipesController < ApplicationController
     @recipe_shopping.ids.each do |id|
       @food.push(Food.find_by(:id))
     end
-    @user_food = current_user.foods
+    @user_food = current_user.foodss
     @comparison_food = custom_difference(@food, @user_food)
     @food.each do |a|
       puts a.name
@@ -98,6 +98,19 @@ class RecipesController < ApplicationController
     redirect_to edit_recipe_path(@recipe)
   end
 
+  def new_ingredient
+    @recipe = Recipe.find(params[:id])
+    @recipe_food = RecipeFood.new
+
+    @food = Food.all
+
+    @recipe_food.recipe = @recipe
+
+    @recipe_food.save
+
+    redirect_to edit_recipe_path(@recipe)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -108,6 +121,32 @@ class RecipesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
+  end
+
+  def same_food(_food, _user_food)
+    @comparis_food = []
+    @user_food.each do |uf|
+      @food.each do |rf|
+        next unless uf.name == rf.name
+        next if (uf.quantity - rf.quantity).zero?
+
+        uf.quantity = uf.quantity - rf.quantity
+        @comparis_food.push(uf)
+      end
+    end
+    if @comparis_food.count.zero?
+      0
+    else
+      @comparis_food
+    end
+  end
+
+  def custom_difference(all, subset)
+    all.select do |all_curr|
+      subset.find do |subset_curr|
+        subset_curr.name == all_curr.name
+      end.nil?
+    end
   end
 
   def same_food(_food, _user_food)
