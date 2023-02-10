@@ -66,7 +66,7 @@ class RecipesController < ApplicationController
     @recipe_shopping = Recipe.find(params[:id]).recipe_foods
     @food = []
     @recipe_shopping.ids.each do |id|
-      @food.push(Food.find_by(id:))
+      @food.push(Food.find_by(:id))
     end
     @user_food = current_user.foods
     @comparison_food = custom_difference(@food, @user_food)
