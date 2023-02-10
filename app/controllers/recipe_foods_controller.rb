@@ -13,6 +13,16 @@ class RecipeFoodsController < ApplicationController
     end
   end
 
+  def update
+    @recipe_food = RecipeFood.find(params[:id])
+    if @recipe_food.update(recipe_food_params)
+      flash[:sucess] = 'Recipe_food updated successfully'
+    else
+      flash.now[:error] = 'Error: Recipe_food could not be updated'
+    end
+    redirect_to recipe_path(params[:recipe_id])
+  end
+
   def create
     @recipe_food = RecipeFood.find_by(recipe: recipe_food_params[:inventory],
                                       food_id: recipe_food_params[:food_id])
@@ -29,7 +39,7 @@ class RecipeFoodsController < ApplicationController
   end
 
   def destroy
-    @recipe = Recipe.find(params[:id])
+    @recipe_food = RecipeFood.find(params[:id])
     if @recipe_food.delete
       flash[:sucess] = 'Food deleted successfully'
     else
@@ -41,6 +51,6 @@ class RecipeFoodsController < ApplicationController
   private
 
   def recipe_food_params
-    params.require(:recipe_food).permit(:food_id, :quantity)
+    params.require(:recipe_food).permit(:food_id, :quantity).merge(recipe_id: params[:recipe_id])
   end
 end
