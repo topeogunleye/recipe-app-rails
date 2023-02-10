@@ -18,7 +18,7 @@ class RecipeFoodsController < ApplicationController
       RecipeFood.create(recipe_food_params)
       flash[:sucess] = 'Recipe_food created successfully'
     end
-    redirect_to recipes_path(params[:recipe_id])
+    redirect_to recipe_path(params[:recipe_id])
   end
 
   def destroy
