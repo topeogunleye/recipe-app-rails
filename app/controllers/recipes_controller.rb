@@ -26,8 +26,7 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /recipes or /recipes.json
   def create
@@ -71,7 +70,7 @@ class RecipesController < ApplicationController
   def shopping_list
     @recipe_shopping = Recipe.find(params[:id]).recipe_foods
     @food = []
-    @recipe_shopping.ids.each do |id|
+    @recipe_shopping.ids.each do |_id|
       @food.push(Food.find_by(:id))
     end
     @user_food = current_user.foods
@@ -94,33 +93,32 @@ class RecipesController < ApplicationController
   def new_ingredient
     @recipe = Recipe.find(params[:id])
     @recipe_food = @recipe.recipe_foods.build
-    @ingredient = RecipeFood.create(recipe_id: params[:recipe_id], food_id: params[:food_id], quantity: params[:quantity])
-   
-    if  @ingredient.save
+    @ingredient = RecipeFood.create(recipe_id: params[:recipe_id], food_id: params[:food_id],
+                                    quantity: params[:quantity])
+
+    if @ingredient.save
       flash[:notice] = 'Ingredient was successfully created.'
       redirect_to recipe_url(params[:recipe_id])
     else
       flash[:alert] = 'Ingredient was not created.'
       render :new_ingredient
     end
-
   end
-  end
+end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_recipe
-    @recipe = Recipe.find(params[:id])
-  end
+# Use callbacks to share common setup or constraints between actions.
+def set_recipe
+  @recipe = Recipe.find(params[:id])
+end
 
-  # Only allow a list of trusted parameters through.
-  def recipe_params
-    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
-  end
+# Only allow a list of trusted parameters through.
+def recipe_params
+  params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
+end
 
-  def rec
-
+def rec
   def same_food(_food, _user_food)
     @comparis_food = []
     @user_food.each do |uf|

@@ -1,16 +1,14 @@
 class RecipeFoodsController < ApplicationController
-
   def new
-    @recipe_food = RecipeFood.new	
+    @recipe_food = RecipeFood.new
     respond_to do |format|
       format.html { render :new, locals: { recipe_food: @recipe_food } }
     end
-
   end
 
   def create
     @recipe_food = RecipeFood.find_by(recipe: recipe_food_params[:inventory],
-                                            food_id: recipe_food_params[:food_id])
+                                      food_id: recipe_food_params[:food_id])
 
     if @recipe_food
       @recipe_food.increment(:quantity, inventory_food_params[:quantity].to_i)
@@ -22,7 +20,7 @@ class RecipeFoodsController < ApplicationController
     end
     redirect_to recipes_path(params[:recipe_id])
   end
-  
+
   def destroy
     @recipe = Recipe.find(params[:id])
     if @recipe_food.delete
@@ -34,7 +32,8 @@ class RecipeFoodsController < ApplicationController
   end
 
   private
-    def recipe_food_params
-      params.require(:recipe_food).permit(:food_id, :quantity)
-    end
+
+  def recipe_food_params
+    params.require(:recipe_food).permit(:food_id, :quantity)
+  end
 end
