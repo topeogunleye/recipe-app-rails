@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
+  # root "foods#index"
   resources :recipes do
     resources :recipe_foods, only: [:new, :create, :edit, :destroy]
   end
@@ -12,4 +14,3 @@ Rails.application.routes.draw do
   end
   resources :foods, only: [:new, :create, :index, :show, :destroy]
 end
-    
