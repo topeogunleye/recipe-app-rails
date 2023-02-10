@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get '/public_recipes', to:"public_recipes#index" 
-  post '/ingredients_new', to: ""
   resources :recipes
   get '/general_shopping_list', to: "recipes#general_shopping_list"
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
