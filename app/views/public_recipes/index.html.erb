@@ -1,0 +1,17 @@
+<div class="container">
+  <h1 class="text-center">Public Recipes</h1>
+  <% @public_recipes.each do |public_recipe| %>
+    <table class="table table-borderless border w-75 m-auto">
+      <tbody>
+        <tr scope="col">
+          <td><%= public_recipe.name %></td>
+          <td>Total food items: <%= public_recipe.food.count %></td>
+        </tr>
+        <tr scope="col">          
+          <td>By <%= public_recipe.user.name %></td>
+          <td>Total price: $<%= public_recipe.food.sum(:price) %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>  
+</div>

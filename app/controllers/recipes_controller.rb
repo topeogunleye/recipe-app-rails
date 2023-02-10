@@ -6,11 +6,6 @@ class RecipesController < ApplicationController
     @recipes = current_user.recipes
   end
 
-  def public_recipes
-    @public_recipes = Recipe.includes(:user).all.where(public: true).order(created_at: :desc)
-    render :public_recipes
-  end
-
   # GET /recipes/1 or /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
@@ -72,7 +67,7 @@ class RecipesController < ApplicationController
     @recipe_shopping.ids.each do |_id|
       @food.push(Food.find_by(:id))
     end
-    @user_food = current_user.foods
+    @user_food = current_user.foodss
     @comparison_food = custom_difference(@food, @user_food)
     @food.each do |a|
       puts a.name
