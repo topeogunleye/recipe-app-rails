@@ -2,6 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    return unless user.present?
     can :destroy, Food, id:user.id
     can :destroy, Recipe, user_id:user.id
 
