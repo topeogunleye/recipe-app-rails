@@ -9,21 +9,19 @@ class RecipeFoodsController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.find(params[:recipe_id])
-    @recipe_food = @recipe.recipe_foods.build(recipe_food_params)
-    if @recipe_food.save
-      redirect_to @recipe
-    else
-      render 'recipes/show'
-    end
-  end
+    @recipe_food = RecipeFood.find_by(recipe: recipe_food_params[:inventory],
+                                            food_id: recipe_food_params[:food_id])
 
-  # def destroy
-  #   @recipe = Recipe.find(params[:recipe_id])
-  #   @recipe_food = @recipe.recipe_foods.find(params[:id])
-  #   @recipe_food.destroy
-  #   redirect_to @recipe
-  # end
+    if @recipe_food
+      @recipe_food.increment(:quantity, inventory_food_params[:quantity].to_i)
+      @recipe_food.save
+      flash[:sucess] = 'Recipe_food updated successfully'
+    else
+      RecipeFood.create(recipe_food_params)
+      flash[:sucess] = 'Recipe_food created successfully'
+    end
+    redirect_to recipes_path(params[:recipe_id])
+  end
   
   def destroy
     @recipe = Recipe.find(params[:id])
