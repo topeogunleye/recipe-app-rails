@@ -17,7 +17,7 @@
         <tr>
           <td><%= inventory_food.food.name %></td>
           <td><%= inventory_food.quantity %></td>
-          <td><%= link_to 'Delete', "#" %></td>
+          <td><%= button_to 'Delete', inventory_inventory_food_path(@inventory, id: inventory_food), method: :delete, data: { turbo: false }, class: 'btn btn-danger' %></td>
         </tr>
       <% end %>
     </tbody>
