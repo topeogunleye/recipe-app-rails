@@ -13,13 +13,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <% @inventory_foods.each do |inventory_food| %>
+      <% @inventory_foods.each do |inventory_food| %>
+        <tr>
           <td><%= inventory_food.food.name %></td>
           <td><%= inventory_food.quantity %></td>
           <td><%= link_to 'Delete', "#" %></td>
-        <% end %>
-      </tr>
+        </tr>
+      <% end %>
     </tbody>
   </table>
   </div>
