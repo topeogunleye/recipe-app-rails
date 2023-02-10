@@ -104,21 +104,19 @@ class RecipesController < ApplicationController
       render :new_ingredient
     end
   end
-end
 
   private
 
-# Use callbacks to share common setup or constraints between actions.
-def set_recipe
-  @recipe = Recipe.find(params[:id])
-end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
 
-# Only allow a list of trusted parameters through.
-def recipe_params
-  params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
-end
+  # Only allow a list of trusted parameters through.
+  def recipe_params
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
+  end
 
-def rec
   def same_food(_food, _user_food)
     @comparis_food = []
     @user_food.each do |uf|
