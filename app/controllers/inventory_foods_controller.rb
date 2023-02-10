@@ -7,7 +7,8 @@ class InventoryFoodsController < ApplicationController
   end
 
   def create
-    @inventory_food = InventoryFood.find_by(inventory: inventory_food_params[:inventory], food_id: inventory_food_params[:food_id])
+    @inventory_food = InventoryFood.find_by(inventory: inventory_food_params[:inventory],
+                                            food_id: inventory_food_params[:food_id])
 
     if @inventory_food
       @inventory_food.increment(:quantity, inventory_food_params[:quantity].to_i)
@@ -32,6 +33,7 @@ class InventoryFoodsController < ApplicationController
   end
 
   private
+
   def inventory_food_params
     params.require(:inventory_food).permit(:quantity, :food_id).merge(inventory: Inventory.find(params[:inventory_id]))
   end
