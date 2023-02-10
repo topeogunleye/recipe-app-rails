@@ -1,0 +1,30 @@
+<div class="shopping_list_container">
+  <h1>Shopping List</h1>
+  <h4>Amount of food items to buy: <%= @comparison_food.count %>  Total value of food needed: 
+    <% sum = 0 %>
+    <% @comparison_food.each do |cf| %>
+      <% sum += cf.quantity * cf.price %>
+    <% end %>
+    <%= sum %>
+  <h4>
+  
+  <br />
+  <% if @comparison_food.count == 0 %>
+    <p>You have all the ingredients</p>
+  <% else %>
+    <table>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+      <% @comparison_food.each do |f| %>
+      <tr>
+        <td><%= f.name %></td>
+        <td><%= f.quantity %> <%= f.measurement_unit %></td>
+        <td><%= f.price %></td>
+      </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>
