@@ -20,6 +20,17 @@ class InventoryFoodsController < ApplicationController
     redirect_to inventory_path(params[:inventory_id])
   end
 
+  def destroy
+    @inventory_food = InventoryFood.find(params[:id])
+
+    if @inventory_food.delete
+      flash[:sucess] = 'food deleted successfully'
+    else
+      flash.now[:error] = 'Error: Inventory could not be deleted'
+    end
+    redirect_to inventory_path(params[:inventory_id])
+  end
+
   private
   def inventory_food_params
     params.require(:inventory_food).permit(:quantity, :food_id).merge(inventory: Inventory.find(params[:inventory_id]))
