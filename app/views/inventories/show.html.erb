@@ -1,5 +1,26 @@
 <section>
   <div class="container">
-    <h1>Inventory Details!!</h1>
+    <div class="d-flex flex-column pb-3 mb-5 border-bottom">
+      <h1 class="m-auto"><%= @inventory.name %></h1>
+      <%= link_to 'Add food', new_inventory_inventory_food_path(@inventory), class: 'btn btn-success d-block ms-auto' %>
+    </div>
+  <table class="table table-bordered table-striped w-75 m-auto ">
+    <thead>
+      <tr>
+        <th scope="col">Food</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @inventory_foods.each do |inventory_food| %>
+        <tr>
+          <td><%= inventory_food.food.name %></td>
+          <td><%= inventory_food.quantity %></td>
+          <td><%= button_to 'Delete', inventory_inventory_food_path(@inventory, id: inventory_food), method: :delete, data: { turbo: false }, class: 'btn btn-danger' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
   </div>
 </section>
