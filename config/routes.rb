@@ -8,3 +8,4 @@ Rails.application.routes.draw do
   resources :inventories, only: [:index, :show, :destroy]
 
 end
+    

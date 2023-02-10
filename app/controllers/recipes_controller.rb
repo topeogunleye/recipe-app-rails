@@ -87,15 +87,18 @@ class RecipesController < ApplicationController
 
   def new_ingredient
     @recipe = Recipe.find(params[:id])
-    @recipe_food = RecipeFood.new
+    @recipe_food = @recipe.recipe_foods.build
+    @ingredient = RecipeFood.create(recipe_id: params[:recipe_id], food_id: params[:food_id], quantity: params[:quantity])
+   
+    if  @ingredient.save
+      flash[:notice] = 'Ingredient was successfully created.'
+      redirect_to recipe_url(params[:recipe_id])
+    else
+      flash[:alert] = 'Ingredient was not created.'
+      render :new_ingredient
+    end
 
-    @food = Food.all
-
-    @recipe_food.recipe = @recipe
-
-    @recipe_food.save
-
-    redirect_to edit_recipe_path(@recipe)
+  end
   end
 
   private
@@ -109,6 +112,8 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
+
+  def rec
 
   def same_food(_food, _user_food)
     @comparis_food = []
