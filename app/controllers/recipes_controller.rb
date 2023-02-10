@@ -3,7 +3,6 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @user = current_user
     @recipes = current_user.recipes
   end
 
@@ -13,15 +12,22 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show; end
+  def show
+    @recipe = Recipe.find(params[:id])
+    @recipe_foods = @recipe.recipe_foods
+  end
 
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+    respond_to do |format|
+      format.html { render :new, locals: { recipe: @render } }
+    end
   end
 
   # GET /recipes/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /recipes or /recipes.json
   def create
