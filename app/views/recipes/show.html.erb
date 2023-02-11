@@ -40,7 +40,7 @@
   </div>
 </div>
 <div class="container mx-auto mt-28 px-5 ">
- 
+
   <%= link_to "Back to recipes", recipes_path, class:"no-underline hover:underline text-purple-700 text-lg"%>
   <div class="d-flex justify-content-between">
     <button type="button" class="long-btn" data-bs-toggle="modal" data-bs-target="#shoppingModal">Generate Shopping List</button>
@@ -105,7 +105,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="generate" onclick="window.location.href = '<%= recipe_path(@recipe) %>/?inventory_id='+document.getElementById('invetory_list').value">Generate</button>
+        <button type="button" class="btn btn-primary" id="generate" onclick="window.location.href = '/shopping_list?recipe_id=<%= @recipe.id %>&inventory_id='+document.getElementById('invetory_list').value">Generate</button>
       </div>
     </div>
   </div>
