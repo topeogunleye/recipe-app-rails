@@ -21,8 +21,4 @@ RSpec.describe Recipe, type: :model do
     @recipe.user_id = nil
     expect(@recipe).to_not be_valid
   end
-
-
 end
-
-  
