@@ -3,16 +3,21 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @user = current_user
     @recipes = current_user.recipes
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show; end
+  def show
+    @recipe = Recipe.find(params[:id])
+    @recipe_foods = @recipe.recipe_foods
+  end
 
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+    respond_to do |format|
+      format.html { render :new, locals: { recipe: @render } }
+    end
   end
 
   # GET /recipes/1/edit
@@ -21,7 +26,6 @@ class RecipesController < ApplicationController
   # POST /recipes or /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.user = current_user
 
     respond_to do |format|
       if @recipe.save
@@ -82,15 +86,17 @@ class RecipesController < ApplicationController
 
   def new_ingredient
     @recipe = Recipe.find(params[:id])
-    @recipe_food = RecipeFood.new
+    @recipe_food = @recipe.recipe_foods.build
+    @ingredient = RecipeFood.create(recipe_id: params[:recipe_id], food_id: params[:food_id],
+                                    quantity: params[:quantity])
 
-    @food = Food.all
-
-    @recipe_food.recipe = @recipe
-
-    @recipe_food.save
-
-    redirect_to edit_recipe_path(@recipe)
+    if @ingredient.save
+      flash[:notice] = 'Ingredient was successfully created.'
+      redirect_to recipe_url(params[:recipe_id])
+    else
+      flash[:alert] = 'Ingredient was not created.'
+      render :new_ingredient
+    end
   end
 
   private
@@ -102,7 +108,8 @@ class RecipesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def recipe_params
-    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description,
+                                   :public).merge(user_id: current_user.id)
   end
 
   def same_food(_food, _user_food)
