@@ -4,5 +4,5 @@ class Food < ApplicationRecord
   belongs_to :user, foreign_key: :user_id
   has_many :inventories, through: :inventory_foods
   validates :name, presence: true
-  validates :price, comparison: { greater_than: 0 }, :numericality => true
+  validates :price, comparison: { greater_than: 0 }, numericality: true
 end
