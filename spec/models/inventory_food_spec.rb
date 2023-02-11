@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe InventoryFood, type: :model do
-  let(:user) {create(:user)}
+  let(:user) { create(:user) }
   let(:inventory) { create(:inventory, :user) }
   let(:food) { create(:food) }
   let(:inventory_foods) { create(:inventory_foods, inventory:, food:) }
@@ -15,4 +15,3 @@ RSpec.describe InventoryFood, type: :model do
     it { is_expected.to validate_numericality_of(:quantity) }
   end
 end
-
