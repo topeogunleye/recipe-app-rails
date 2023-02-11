@@ -1,14 +1,14 @@
 class ShoppingListController < ApplicationController
   def index
-    @inventory = Inventory.find(params[:inventory_id])
-    @recipe = Recipe.find(params[:recipe_id])
+    @inventory = Inventory.includes(:foods, :inventory_foods).find(params[:inventory_id])
+    @recipe = Recipe.includes(:food, :recipe_foods).find(params[:recipe_id])
 
     @missing_foods = []
     @total_food_price = 0
 
     @recipe.food.each do |food|
-      inventory_food = InventoryFood.find_by(inventory: @inventory, food:)
-      recipe_food = RecipeFood.find_by(recipe: @recipe, food:)
+      inventory_food = @inventory.inventory_foods.find_by(food:)
+      recipe_food = @recipe.recipe_foods.find_by(food:)
 
       if inventory_food.nil?
         @missing_foods << {
