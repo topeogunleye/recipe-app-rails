@@ -17,6 +17,6 @@
   <%= form.label :cooking_time, style: "display: block" %>
   <%= form.number_field :cooking_time %>
   <%= form.text_area :description %>
-  <%= form.select :public, options_for_select([true, false]), class:"block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+  <%= form.select :public, options_for_select([["True", true], ["False", false]]), class:"block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
   <%= form.submit %>
 <% end %>
