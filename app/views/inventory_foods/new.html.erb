@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Add new Inventory Food</h1>
+  <%= bootstrap_form_with model: inventory_food, url: inventory_inventory_foods_path(inventory_id: params[:inventory_id]) do |f| %>
+    <%= f.text_field :quantity %>
+    <%= f.select :food_id, Food.all.collect {|food| [food.name, food.id]}, include_blanck: true %>
+    <%= f.submit %>
+  <% end %>
+</div>
