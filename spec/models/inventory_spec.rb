@@ -12,7 +12,7 @@ RSpec.describe Inventory, type: :model do
     expect(subject).to be_valid
   end
 
-  it "description should be valid" do
+  it "description should not be valid" do
     subject.description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec."
     expect(subject).to_not be_valid
   end
