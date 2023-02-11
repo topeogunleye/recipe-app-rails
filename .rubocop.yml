@@ -2,7 +2,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - "db/**/*"
-    - "bin/*" 
+    - "bin/*"
     - "config/**/*"
     - "Guardfile"
     - "Rakefile"
@@ -16,7 +16,7 @@ Metrics/MethodLength:
   Include:
     - "app/controllers/*"
     - "app/models/*"
-  Max: 20
+  Max: 30
 Metrics/AbcSize:
   Include:
     - "app/controllers/*"

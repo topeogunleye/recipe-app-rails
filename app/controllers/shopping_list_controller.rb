@@ -7,8 +7,8 @@ class ShoppingListController < ApplicationController
     @total_food_price = 0
 
     @recipe.food.each do |food|
-      inventory_food = InventoryFood.find_by(inventory: @inventory, food: food)
-      recipe_food = RecipeFood.find_by(recipe: @recipe, food: food)
+      inventory_food = InventoryFood.find_by(inventory: @inventory, food:)
+      recipe_food = RecipeFood.find_by(recipe: @recipe, food:)
 
       if inventory_food.nil?
         @missing_foods << {
