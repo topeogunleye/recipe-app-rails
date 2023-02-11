@@ -1,9 +1,7 @@
-<div class="container">  
+<div class="container">
   <%= render @food %>
   <div>
     <%= link_to "Back to foods", foods_path, class: "btn back-btn btn-outline-primary" %>
-    <% if can? :destroy, @food %>
-      <%= button_to "Destroy this food", @food, method: :delete, class: "btn btn-outline-secondary" %>
-    <% end %>    
+    <%= button_to "Destroy this food", @food, method: :delete, class: "btn btn-outline-secondary" %>
   </div>
 </div>

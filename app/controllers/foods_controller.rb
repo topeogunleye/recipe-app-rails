@@ -51,6 +51,6 @@ class FoodsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def food_params
-    params.require(:food).permit(:name, :measurement_unit, :price).merge(user_id: current_user.id)
+    params.require(:food).permit(:name, :measurement_unit, :price)
   end
 end
