@@ -1,8 +1,0 @@
-<div class="container">
-  <h1>Edit Recipe Food</h1>
-  <%= bootstrap_form_with model: recipe_food, url: recipe_recipe_food_path(recipe_id: params[:recipe_id]) do |f| %>
-    <%= f.text_field :quantity %>
-    <%= f.select :food_id, Food.all.collect {|food| [food.name, food.id]}, include_blanck: true %>
-    <%= f.submit "Update" %>
-  <% end %>
-</div>
