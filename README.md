@@ -69,7 +69,7 @@ The Recipe app keeps track of all your recipes, ingredients, and inventory. It w
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
--   Coming Soon
+-   [render](https://rails-u2d1.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
